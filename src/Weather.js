@@ -10,7 +10,7 @@ export default function Weather(props) {
       ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-      date: new Date(response.data.date.dt * 1000),
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
       wind: response.data.wind.speed,
@@ -74,11 +74,10 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const apiKey = "f1c27f82a015ee0aedbdd71283730fc8";
+    const apiKey = "e829f3d853cb70f3f45f13f77450140b";
     let city = "New York";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
-
     return "Loading...";
   }
 }
